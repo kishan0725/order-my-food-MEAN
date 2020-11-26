@@ -7,9 +7,9 @@ Live Demo: https://order-my-food-online.herokuapp.com/
 ## Screenshots
 
 - **Minimalist Registration and Login Page**
-![image](https://user-images.githubusercontent.com/36665975/100368451-9cf49880-3029-11eb-8444-d4ac1ba00cce.png)
+  ![image](https://user-images.githubusercontent.com/36665975/100368451-9cf49880-3029-11eb-8444-d4ac1ba00cce.png)
 
-![image](https://user-images.githubusercontent.com/36665975/100368481-a5e56a00-3029-11eb-9a19-524131dc7e4e.png)
+  ![image](https://user-images.githubusercontent.com/36665975/100368481-a5e56a00-3029-11eb-9a19-524131dc7e4e.png)
 
 - **Home Page having list of hotels**
 ![image](https://user-images.githubusercontent.com/36665975/99675575-61902200-2a9d-11eb-94b4-a8f753e4e5b7.png)
