@@ -37,6 +37,11 @@ Live Demo: https://order-my-food-online.herokuapp.com/
 
 ## How to run the application?
 
+  ### Prerequisites:
+  - Node LTS version
+  - git
+  - Angular CLI
+
   1. Clone the repository in your local machine.
   2. Navigate to `client` directory and run the command `npm i`. Do the same for `server` directory.
   3. Navigate to `server` directory , create a file named `.env`.
