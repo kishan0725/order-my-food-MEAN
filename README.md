@@ -1,8 +1,8 @@
 # OrderMyFood
 
-An online food ordering system developed using Angular 10 and Material UI.
+An online food ordering system developed using MEAN (MongoDB, ExpressJS, Angular, NodeJS) with jwt authentication enabled and password encrypted.
   
-Live Demo: http://order-my-food-online.s3-website-us-east-1.amazonaws.com/
+Live Demo: https://order-my-food-online.herokuapp.com/
 
 ## Screenshots
 
