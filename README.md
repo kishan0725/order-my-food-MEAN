@@ -34,3 +34,21 @@ Live Demo: https://order-my-food-online.herokuapp.com/
 
 - **Payment acknowledgement**
 ![image](https://user-images.githubusercontent.com/36665975/99896541-7fd16a00-2cb7-11eb-8157-ebcbce443bd8.png)
+
+## How to run the application?
+
+  1. Clone the repository in your local machine.
+  2. Navigate to `client` directory and run the command `npm i`. Do the same for `server` directory.
+  3. Navigate to `server` directory , create a file named `.env`.
+  4. Inside the `.env` file, add your mongodb remote string as `DB_CONNECTION` and a secret key for your jwt token as `SECRET_KEY`.
+  5. Run the command `node server` and navigate to your localhost url.
+  6. Now, you should see the application running in your browser.
+
+## How to make any changes in the UI?
+
+  1. Navigate to `client` directory. 
+  2. Do whatever you want and save the changes.
+  3. Run the command `ng build --prod`.
+  4. Once the build is done, copy the contents of 'dist/order-my-food' and paste it under the `public` folder in `server` directory.
+  5. Run the command `node server` and navigate to your localhost url.
+  6. Now, you should see the changes that you made in the application running in your browser.
