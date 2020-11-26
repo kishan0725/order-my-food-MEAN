@@ -1,0 +1,59 @@
+.menus-container {
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+    align-items: center;
+    .menu-header {
+        padding: 1%;
+    }
+    .menu {
+        margin-bottom: 2%;
+        transition: transform .2s;
+        box-shadow: 0 6px 16px -5px rgba(218, 167, 216, 0.68);
+        width: 90%;
+        border-radius: 10px;
+        .mat-card-header .mat-card-title {
+            margin: 12px 0;
+        }
+        mat-card-header {
+            text-transform: uppercase;
+        }
+        mat-card-content {
+            p {
+                text-indent: 3%;
+                font-size: 19px;
+                padding-left: 2%;
+                line-height: 30px;
+            }
+        }
+        mat-card-actions {
+            padding: 1% 2%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            span {
+                font-size: 20px;
+                font-weight: 600;
+            }
+            button {
+                background-color: #9c27b0;
+                color: white;
+                font-size: 17px;
+                text-transform: uppercase;
+            }
+        }
+    }
+}
+
+.menu:hover {
+    transform: scale(1.03);
+}
+
+h3 {
+    font-size: 25px;
+    text-transform: uppercase;
+}
+
+mat-card-title {
+    font-weight: 600;
+}

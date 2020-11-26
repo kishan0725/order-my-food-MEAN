@@ -1,0 +1,52 @@
+<!-- <app-nav-bar [userName]="userName"></app-nav-bar> -->
+
+<div [class]="{'loader-center':!hotel}">
+    <mat-spinner *ngIf="!hotel"></mat-spinner>
+</div>
+<div class="hotel-container">
+    <mat-sidenav-container>
+        <mat-sidenav-content>
+            <app-nav-bar [userName]="userName"></app-nav-bar>
+            <div class="menu-container" *ngIf="hotel">
+                <div class="hotel-meta">
+                    <div class="hotel-meta-data">
+                        <h3 class="mat-display-1">{{hotel.name}}</h3>
+                        <div class="address">
+                            <mat-icon>location_on</mat-icon>
+                            <p>{{hotel.address}}</p>
+                        </div>
+                    </div>
+                    <mat-icon matBadge="{{cartItems.length}}" matBadgeColor="warn" class="shopping-cart" (click)="sidenav.toggle(); scrollTop()" *ngIf="cartItems.length">shopping_cart</mat-icon>
+                    <mat-icon class="shopping-cart" (click)="toggleSideNav()" *ngIf="!cartItems.length">shopping_cart</mat-icon>
+                </div>
+                <div class="hotel-menus">
+                    <app-menu-item [hotel]="hotel" (addToMyCartEvent)="addToMyCart($event)" 
+                    [class]="{'apply-felx-basis': cartItems.length}"></app-menu-item>
+                    <mat-divider [vertical]="true"></mat-divider>
+                </div>
+            </div>
+        </mat-sidenav-content>
+        <mat-sidenav #sidenav [mode]="toggleMode" position="end" [opened]="false">
+            <div class="price-container" *ngIf="!cartItems.length">
+                <h3>My Basket</h3>
+                <p class="empty-basket">
+                    Your basket is empty. Please add items to your basket.
+                </p>
+            </div>
+            <div class="price-container" *ngIf="cartItems.length">
+                <h3>My Basket</h3>
+                <div class="cart-items">
+                    <app-cart-item [cartItems]="cartItems" (removeQuantityEvent)="removeQuantity($event)"
+                    (addQuantityEvent)="addQuantity($event)" (removeItemEvent)="removeItem($event)"></app-cart-item>
+                    
+                </div>
+                <div class="amount" *ngIf="cartItems.length"> Bill Amount: {{'\u20B9'}} {{totalAmount}}</div>
+                <button mat-raised-button color="warn" class="calculate-menu" *ngIf="cartItems.length && totalAmount" (click)="openPaymentMethod()">
+                    Pay Bill
+                </button>
+            </div>
+        </mat-sidenav>
+    </mat-sidenav-container>
+</div>
+
+

@@ -1,0 +1,138 @@
+.hotel-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+    height: 100vh;
+    .menu-container {
+        background: #e8dada;
+        .hotel-meta {
+            background: plum;
+            padding: 1%;
+            align-items: center;
+            display: flex;
+            height: 4%;
+            justify-content: space-between;
+            .shopping-cart {
+                font-size: 30px;
+                margin-right: 20px;
+            }
+            .shopping-cart:hover {
+                cursor: pointer;
+            }
+            .hotel-meta-data {
+                display: flex;
+                flex-direction: column;
+                .address {
+                    display: flex;
+                    margin-top: 1%;
+                    mat-icon {
+                        margin-right: 5px;
+                        color:#9c27b0;
+                    }
+                    p {
+                        margin: 0 !important;
+                        font-size: 20px;
+                        font-weight: 600;
+                        color: #000000bf;
+                    }
+                }
+            }
+        }
+        .hotel-menus {
+            display: flex;
+        }
+    }
+    mat-sidenav {
+        width: 30%;
+        background: #e8dada;
+        padding: 1%;
+    }
+    .price-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .empty-basket {
+            font-size: large;
+            font-weight: 600;
+            padding: 5%;
+        }
+        h3 {
+            padding: 1%;
+        }
+        .cart-items {
+            width: 90%;
+        }
+        .amount {
+            margin-top: 5%;
+            font-size: 25px;
+            font-weight: 600;
+        }
+        .calculate-menu {
+            margin: 5% 0;
+            background-color: forestgreen;
+            width: 90%;
+            font-size: 20px;
+            padding: 2%;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+    }
+}
+
+h3 {
+    font-size: 25px;
+    text-transform: uppercase;
+}
+
+::ng-deep .swal2-title {
+    font-size: 30px !important;
+    font-weight: 600 !important;
+}
+
+::ng-deep .swal2-container.swal2-backdrop-show, .swal2-container.swal2-noanimation {
+    background: rgba(0,0,0,.4) !important;
+}
+
+::ng-deep .swal2-icon.swal2-info {
+    border-color: #9c27b0bf !important;
+    color: #9c27b0bf !important;
+}
+
+.mat-display-1 {
+    margin: 0 !important;
+    font-weight: 600;
+    font-size: 25px;
+}
+
+h4 {
+    margin: 15px 0 !important;
+}
+
+.loader-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+@media only screen and (max-width: 600px)  {
+    mat-sidenav {
+        width: 85% !important;
+    }
+    mat-icon {
+        margin-right: 10px;
+    }
+
+    .mat-display-1 {
+        font-size: 20px !important;
+        margin-left: 2% !important;
+    }
+
+    .address {
+        p {
+            font-size: 15px !important;
+            width: 75%;
+        }
+    }
+}

@@ -1,0 +1,13 @@
+::ng-deep .swal2-title {
+    font-size: 30px !important;
+    font-weight: 600 !important;
+}
+
+::ng-deep .swal2-container.swal2-backdrop-show, .swal2-container.swal2-noanimation {
+    background: #9c27b0 !important;
+}
+
+::ng-deep .swal2-icon.swal2-info {
+    border-color: #9c27b0bf !important;
+    color: #9c27b0bf !important;
+}

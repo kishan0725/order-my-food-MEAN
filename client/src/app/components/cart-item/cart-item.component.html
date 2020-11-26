@@ -1,0 +1,18 @@
+<div class="cart-item" *ngFor="let cartItem of cartItems">
+    <h4>{{cartItem.name}}</h4>
+    <div class="price-input">
+        <button mat-mini-fab color="accent" (click)="removeQuantity(cartItem)">
+            <mat-icon>remove</mat-icon>
+        </button>
+        <mat-form-field class="quantity-form-field">
+            <mat-label>Quantity</mat-label>
+            <input matInput type="text" [(ngModel)]="cartItem.quantity">
+        </mat-form-field>
+        <button mat-mini-fab color="accent" (click)="addQuantity(cartItem)">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+    <button mat-raised-button color="warn" class="remove-menu" (click)="removeItem(cartItem)">
+        Remove Item
+    </button>
+</div>

@@ -1,0 +1,8 @@
+<mat-form-field appearance="fill">
+    <mat-label>Sort By</mat-label>
+    <mat-select [(value)]="selectedValue">
+        <mat-option [value]="sort.value" *ngFor="let sort of sortOptions"  (click)="sortHotels(selectedValue)">
+        {{sort.viewValue}}
+        </mat-option>
+    </mat-select>
+</mat-form-field>

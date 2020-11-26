@@ -1,0 +1,51 @@
+mat-card {
+    padding: 21px;
+    margin: 10px;
+    box-shadow: 0 6px 16px -5px rgb(134 97 133 / 68%);
+
+    .mat-card-header .mat-card-subtitle:not(:first-child) {
+        margin-top: -6px !important;
+    }
+
+    .mat-card-title, .mat-card-subtitle {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 200px;
+    }
+    .mat-card-title {
+        text-transform: uppercase;
+        font-weight: 700;
+    }
+    
+    .mat-card-subtitle {
+        font-size: 17px;
+    }
+
+    img {
+        height: 100%;
+    }
+
+    mat-card-content {
+        font-size: 17px;
+        font-weight: 600;
+        line-height: 12px;
+        .rating-star {
+            font-weight: 300;
+        }
+    }
+    
+}
+
+.mat-flat-button.mat-warn, .mat-raised-button.mat-warn, .mat-fab.mat-warn, .mat-mini-fab.mat-warn {
+    background-color: #9c27b0 !important;
+}
+
+::ng-deep .mat-card:not([class*=mat-elevation-z]) {
+    box-shadow: 0 6px 16px -5px rgb(134 97 133 / 68%);
+}
+
+.mat-card:not([class*=mat-elevation-z]):hover {
+    box-shadow: 0 5px 12px 2px rgba(134, 97, 133, 0.68);
+    cursor: pointer;
+}

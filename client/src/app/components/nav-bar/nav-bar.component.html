@@ -1,0 +1,10 @@
+<div class="navbar-container">
+    <img src="/assets/logo.png" class="logo" (click)="goToHome()">
+    <div class="user-profile"  [matMenuTriggerFor]="menu" *ngIf="userName">
+        <p class="greetings">Hello, {{userName}}</p>
+        <ngx-avatar name="{{userName}}" textSizeRatio="2.5" bgColor="#f5f5f5" fgColor="#9c27b0"></ngx-avatar>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="logoutUser()"><mat-icon>logout</mat-icon>Logout</button>
+          </mat-menu>
+    </div>
+</div>
