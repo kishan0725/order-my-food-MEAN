@@ -45,10 +45,10 @@ Live Demo: https://order-my-food-online.herokuapp.com/
   1. Clone the repository in your local machine.
   2. Navigate to `client` directory and run the command `npm i`. Do the same for `server` directory.
   3. Navigate to `server` directory , create a file named `.env`.
-  4. Inside the `.env` file, add your mongodb remote string as `DB_CONNECTION` and a secret key for your jwt token as `SECRET_KEY`.
+  4. Inside the `.env` file, add your mongodb remote string as `DB_CONNECTION` and a secret key (any string) for your jwt token as `SECRET_KEY` (refer this file - https://github.com/kishan0725/order-my-food-MEAN/blob/main/server/.env.example).
   5. Go to your atlas mongodb, create a new collection called `hotels` under the database that you created and copy the contents of the hotel details from here - https://github.com/kishan0725/order-my-food-MEAN/blob/main/client/src/assets/api/data.json and insert it in your `hotels` collection.
-  5. Run the command `node server` and navigate to your localhost url.
-  6. Now, you should see the application running in your browser.
+  6. Run the command `node server` and navigate to your localhost url.
+  7. Now, you should see the application running in your browser.
 
 ## How to make any changes in the UI?
 
