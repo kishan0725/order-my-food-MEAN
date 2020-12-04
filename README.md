@@ -47,7 +47,7 @@ Live Demo: https://order-my-food-online.herokuapp.com/
   3. Navigate to `server` directory , create a file named `.env`.
   4. Inside the `.env` file, add your mongodb remote string as `DB_CONNECTION` and a secret key (any string) for your jwt token as `SECRET_KEY` (refer this file - https://github.com/kishan0725/order-my-food-MEAN/blob/main/server/.env.example).
   5. Go to your atlas mongodb, create a new collection called `hotels` under the database that you created and copy the contents of the hotel details from here - https://github.com/kishan0725/order-my-food-MEAN/blob/main/client/src/assets/api/data.json and insert it in your `hotels` collection.
-  6. Run the command `node server` and navigate to your localhost url.
+  6. Run the command `node server` from the `server` directory and navigate to your localhost url.
   7. Now, you should see the application running in your browser.
 
 ## How to make any changes in the UI?
@@ -56,7 +56,7 @@ Live Demo: https://order-my-food-online.herokuapp.com/
   2. Do whatever changes you want in the application and save it.
   3. Run the command `ng build --prod`.
   4. Once the build is done, copy the contents of 'dist/order-my-food' in the `client` directory and paste it under the `public` folder which is in the `server` directory.
-  5. Run the command `node server` and navigate to your localhost url.
+  5. Run the command `node server` from the `server` directory and navigate to your localhost url.
   6. Now, you should see the changes that you made in the application.
 
 Please do ⭐ the repository, if it helped you in anyway.
