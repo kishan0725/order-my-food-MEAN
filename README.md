@@ -55,7 +55,7 @@ Live Demo: https://order-my-food-online.herokuapp.com/
   1. Navigate to `client` directory. 
   2. Do whatever changes you want in the application and save it.
   3. Run the command `ng build --prod`.
-  4. Once the build is done, copy the contents of 'dist/order-my-food' in the `client` directory and paste it under the `public` folder in `server` directory.
+  4. Once the build is done, copy the contents of 'dist/order-my-food' in the `client` directory and paste it under the `public` folder which is in the `server` directory.
   5. Run the command `node server` and navigate to your localhost url.
   6. Now, you should see the changes that you made in the application.
 
