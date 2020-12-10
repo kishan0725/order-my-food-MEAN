@@ -4,13 +4,14 @@ import { Observable, Subject, throwError } from 'rxjs';
 import { IHotel } from '../models/hotel';
 import { catchError } from 'rxjs/operators';
 import { ICartItem } from '../models/cart-item';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HotelService {
 
-  private url: string = 'api/hotels';
+  private url: string = (environment.baseURL) ? `${environment.baseURL}api/hotels` : 'api/hotels';
   public hasUserName = false;
   public userName = '';
   public cartItems = [];

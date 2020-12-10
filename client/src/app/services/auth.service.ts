@@ -5,14 +5,15 @@ import { catchError } from 'rxjs/operators';
 import { IRegisterUser } from '../models/register-user';
 import { ILoginUser } from '../models/login-user';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private registerURL: string = 'api/register';
-  private loginURL: string = 'api/login';
+  private registerURL: string = (environment.baseURL) ? `${environment.baseURL}api/register` : 'api/register';
+  private loginURL: string = (environment.baseURL) ? `${environment.baseURL}api/login` : 'api/login';
   private isUserLoggedIn: boolean = false;
 
   userLogStatusChange: Subject<boolean> = new Subject<boolean>();
