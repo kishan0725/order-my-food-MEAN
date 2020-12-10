@@ -1,10 +1,15 @@
 # OrderMyFood
 
-An online food ordering system developed using Angular 10 and Material UI.
+An online food ordering system developed using MEAN (MongoDB, ExpressJS, Angular, NodeJS) with jwt authentication enabled and password encrypted.
   
-Live Demo: http://order-my-food-online.s3-website-us-east-1.amazonaws.com/
+Live Demo: https://order-my-food-online.herokuapp.com/
 
 ## Screenshots
+
+- **Minimalist Registration and Login Page**
+  ![image](https://user-images.githubusercontent.com/36665975/100368451-9cf49880-3029-11eb-8444-d4ac1ba00cce.png)
+
+  ![image](https://user-images.githubusercontent.com/36665975/100368481-a5e56a00-3029-11eb-9a19-524131dc7e4e.png)
 
 - **Home Page having list of hotels**
 ![image](https://user-images.githubusercontent.com/36665975/99675575-61902200-2a9d-11eb-94b4-a8f753e4e5b7.png)
@@ -29,3 +34,29 @@ Live Demo: http://order-my-food-online.s3-website-us-east-1.amazonaws.com/
 
 - **Payment acknowledgement**
 ![image](https://user-images.githubusercontent.com/36665975/99896541-7fd16a00-2cb7-11eb-8157-ebcbce443bd8.png)
+
+## How to run the application?
+
+  ### Prerequisites:
+  - Node LTS version
+  - git
+  - Angular CLI
+
+  1. Clone the repository in your local machine.
+  2. Navigate to `client` directory and run the command `npm i`. Do the same for `server` directory.
+  3. Navigate to `server` directory , create a file named `.env`.
+  4. Inside the `.env` file, add your mongodb remote string as `DB_CONNECTION` and a secret key (any string) for your jwt token as `SECRET_KEY` (refer this file - https://github.com/kishan0725/order-my-food-MEAN/blob/main/server/.env.example).
+  5. Go to your atlas mongodb, create a new collection called `hotels` under the database that you created and copy the contents of the hotel details from here - https://github.com/kishan0725/order-my-food-MEAN/blob/main/client/src/assets/api/data.json and insert it in your `hotels` collection.
+  6. Run the command `node server` from the `server` directory and navigate to your localhost url.
+  7. Now, you should see the application running in your browser.
+
+## How to make any changes in the UI?
+
+  1. Navigate to `client` directory. 
+  2. Do whatever changes you want in the application and save it.
+  3. Run the command `ng build --prod`.
+  4. Once the build is done, copy the contents of 'dist/order-my-food' in the `client` directory and paste it under the `public` folder which is in the `server` directory.
+  5. Run the command `node server` from the `server` directory and navigate to your localhost url.
+  6. Now, you should see the changes that you made in the application.
+
+Please do ⭐ the repository, if it helped you in anyway.
