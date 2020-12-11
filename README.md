@@ -35,6 +35,9 @@ Live Demo: https://order-my-food-online.herokuapp.com/
 - **Payment acknowledgement**
 ![image](https://user-images.githubusercontent.com/36665975/99896541-7fd16a00-2cb7-11eb-8157-ebcbce443bd8.png)
 
+- **Order History**
+![image](https://user-images.githubusercontent.com/36665975/101867994-78103180-3ba2-11eb-99ba-a8d81d7ed492.png)
+
 ## How to run the application?
 
   ### Prerequisites:
