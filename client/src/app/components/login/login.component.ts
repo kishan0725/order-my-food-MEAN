@@ -53,6 +53,8 @@ export class LoginComponent implements OnInit {
               this.redirectToHomePage();
               localStorage.setItem('order-my-food-token', res.token);
               localStorage.setItem('order-my-food-username', res.username);
+              localStorage.setItem('order-my-food-email', res.email);
+              localStorage.setItem('order-my-food-userId', res.userId);
               this.router.navigateByUrl("/hotels");
             },
             (error) => {

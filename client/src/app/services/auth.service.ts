@@ -64,6 +64,8 @@ export class AuthService {
   public logoutUser = () => {
     localStorage.removeItem('order-my-food-token');
     localStorage.removeItem('order-my-food-username');
+    localStorage.removeItem('order-my-food-email');
+    localStorage.removeItem('order-my-food-userId');
     this._router.navigateByUrl('/login');
   }
 

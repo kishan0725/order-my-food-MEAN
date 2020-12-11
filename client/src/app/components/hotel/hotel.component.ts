@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ChangeDetectorRef, OnInit, ViewChild } from '@angular/core';
 import { HotelService } from '../../services/hotel.service';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
@@ -17,15 +17,19 @@ export class HotelComponent implements OnInit, AfterViewInit {
   public hotels = [];
   public hotel;
   public hotelId;
+  public ordersHistory;
+  public showOrderHistory = false;
   public cartItems = [];
   public totalAmount = 0;
   public isFetched: boolean = false;
   public toggleMode = "over";
   public userName = '';
+  public email = '';
+  public userId = '';
   public isSideNavShowing: boolean = false;
 
   constructor(private _hotelService: HotelService, private route: ActivatedRoute, 
-    private router: Router, private _sidenavService: SideNavService) { }
+    private router: Router, private _sidenavService: SideNavService, private ref: ChangeDetectorRef) { }
 
   scrollTop = () => {
     document.body.scrollTop = 0; // For Safari
@@ -37,7 +41,8 @@ export class HotelComponent implements OnInit, AfterViewInit {
       "id": menu.id,
       "name": menu.name,
       "price": menu.price,
-      "quantity": 1
+      "quantity": 1,
+      "hotel": this.hotel.name
     }
 
     if(this.isItemAlreadyExist(newItem)) {
@@ -72,12 +77,18 @@ export class HotelComponent implements OnInit, AfterViewInit {
       cancelButtonColor: '#e23c3c'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.toggleSideNav();
+        this.toggleSideNav(true);
       }
     });
   }
 
-  toggleSideNav = () => {
+  toggleSideNav = (isShoppingCart) => {
+    if(isShoppingCart) {
+      this.showOrderHistory = false;
+    }
+    else {
+      this.showOrderHistory = true;
+    }
     this.scrollTop();
     this._sidenavService.toggle();
   }
@@ -94,7 +105,7 @@ export class HotelComponent implements OnInit, AfterViewInit {
       cancelButtonColor: '#e23c3c'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.toggleSideNav();
+        this.toggleSideNav(true);
       }
     });
   }
@@ -128,6 +139,7 @@ export class HotelComponent implements OnInit, AfterViewInit {
     this.cartItems.map((item) => {
       this.totalAmount = this.totalAmount + (item.quantity*item.price)
     });
+    return this.totalAmount;
   }
 
   openPaymentMethod = () => {
@@ -141,24 +153,56 @@ export class HotelComponent implements OnInit, AfterViewInit {
       confirmButtonText: 'Yes, pay bill!'
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire({
-          icon: 'success',
-          title: 'Payment Successfull!',
-          text: "It's just a sample success message. We can integrate real time UPI service!",
-          showConfirmButton: true,
-          confirmButtonColor: '#9c27b0'
-        });
-        this._hotelService.clearAllCartItems();
+        const order = {
+          menu: this.cartItems,
+          amountPaid: this.calculateAmount(),
+          orderDate: new Date()
+        }
+        this._hotelService.saveOrder(order, this.userId).subscribe(
+          (success) => {
+            Swal.fire({
+              icon: 'success',
+              title: 'Payment Successfull!',
+              text: "It's just a sample success message. We can integrate real time UPI service!",
+              showConfirmButton: true,
+              confirmButtonColor: '#9c27b0'
+            });
+          },
+          (err) => {
+            Swal.fire({
+              icon: 'warning',
+              title: 'Payment not successfull!',
+              text: "Sorry, something went wrong :(!",
+              showConfirmButton: true,
+              confirmButtonColor: '#9c27b0'
+            });
+          }
+        )
         this.cartItems = this._hotelService.cartItems;
       }
     })
+  }
+
+  getOrderFromService = async() => {
+    this.ordersHistory = await this._hotelService.getOrders(this.userId).toPromise();
+    this.ordersHistory.orders = this.ordersHistory.orders.sort((a,b) => {
+      let c = <any>new Date(b.orderDate);
+      let d = <any>new Date(a.orderDate);
+      return c-d;
+    });
+    return this.ordersHistory;
+  }
+
+  getOrderHistory = async() => {
+    this.toggleSideNav(false);
+    this.ordersHistory = await this.getOrderFromService();
   }
 
   ngAfterViewInit(): void {
     this._sidenavService.setSidenav(this.sidenav);
   }
 
-  ngOnInit(): void {
+  async ngOnInit() {
     this.scrollTop();
 
     this.route.paramMap.subscribe((params: ParamMap) => {
@@ -170,11 +214,26 @@ export class HotelComponent implements OnInit, AfterViewInit {
     });
 
     this.userName = this._hotelService.userName;
+    this.email = this._hotelService.email;
+    this.userId = this._hotelService.userId;
     this.cartItems = this._hotelService.cartItems;
     this.calculateAmount();
+    
 
     if(!this.userName) {
       this.router.navigateByUrl("/hotels");
     }
+
+    this._hotelService.getOrders(this.userId).subscribe(
+      (data) => {
+        this._hotelService.setOrderHistory(data);
+        this.ordersHistory = this._hotelService.orderHistory;
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+
+    this.ordersHistory = await this.getOrderFromService();
   }
 }

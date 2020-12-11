@@ -13,13 +13,17 @@
             display: flex;
             height: 4%;
             justify-content: space-between;
-            .shopping-cart {
-                font-size: 30px;
-                margin-right: 20px;
+            .header-icons {
+                display: flex;
+                .shopping-cart, .shopping-history {
+                    font-size: 30px;
+                    margin-right: 20px;
+                }
+                .shopping-cart:hover, .shopping-history:hover {
+                    cursor: pointer;
+                }
             }
-            .shopping-cart:hover {
-                cursor: pointer;
-            }
+            
             .hotel-meta-data {
                 display: flex;
                 flex-direction: column;
@@ -62,6 +66,52 @@
         }
         .cart-items {
             width: 90%;
+        }
+        .history-order-items {
+            display: flex;
+            width: 90%;
+            flex-direction: column;
+            h4, .order-date {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                font-size: 20px;
+                text-transform: uppercase;
+                font-weight: 600;
+            }
+            .history-order-card {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                background: #ffff;
+                margin-bottom: 5%;
+                border-radius: 10px;
+                box-shadow: 0 6px 16px -5px rgba(218, 167, 216, 0.68);
+                padding: 5%;
+                transition: transform .2s;
+                .mat-card-title {
+                    text-transform: uppercase;
+                    font-weight: 700;
+                }
+                .mat-card-content {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    width: 90%;
+                    p {
+                        font-size: 15px;
+                        text-transform: uppercase;
+                        font-weight: 600;
+                        .fade-title {
+                            color: #00000085
+                        }
+                    }
+                }
+            }
+            .history-order-card:hover {
+                transform: scale(1.03);
+                cursor: pointer;
+            }
         }
         .amount {
             margin-top: 5%;

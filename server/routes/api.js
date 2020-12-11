@@ -41,7 +41,7 @@ router.post('/register', async(req, res) => {
         .then((registeredUser) => {
             let payload = { subject: registeredUser.id};
             let token = jwt.sign(payload, process.env.SECRET_KEY);
-            res.status(200).send({token, username: newUser.username});
+            res.status(200).send({token, username: registeredUser.username, email: registeredUser.email, userId: registeredUser.id});
         })
         .catch((error) => {console.log(error); res.status(400).send(error)});
     
@@ -61,7 +61,7 @@ router.post('/login', async(req, res) => {
     // create and assign a token
     let payload = { subject: user.id};
     let token = jwt.sign(payload, process.env.SECRET_KEY);
-    return res.status(200).send({token, username: user.username});
+    return res.status(200).send({token, username: user.username, email: user.email, userId: user.id});
 });
 
 router.get('/hotels', verifyToken, async (req, res) => {
@@ -80,6 +80,36 @@ router.get('/hotels/:hotelId', verifyToken, async (req, res) => {
     } catch(err) {
         res.status(404).send(`Unable to process your request - ${err}`);
     }
+});
+
+router.get('/order/:userId', verifyToken, async (req, res) => {
+
+    const user = await User.findById(req.params.userId);
+    if (!user) return res.status(400).send("User doesn't exist!");
+
+    return res.status(200).send({orders: user.orders});
+});
+
+router.post('/order/:userId', verifyToken, async(req, res) => {
+
+    const user = await User.findById(req.params.userId);
+    if (!user) return res.status(400).send("User doesn't exist!");
+
+    User.updateOne(
+        { _id: req.params.userId },
+        { $push: {
+            orders: req.body
+            }
+        },
+        function(err, success) {
+            if(err){
+                return res.status(500).send(err)
+            }
+            else {
+                return res.status(200).send(success);
+            }
+        }
+    )
 });
 
 module.exports = router;
